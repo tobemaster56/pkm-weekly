@@ -1,0 +1,318 @@
+/**
+ * Customize default theme styling by overriding CSS variables:
+ * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
+ */
+
+/**
+ * Colors
+ *
+ * Each colors have exact same color scale system with 3 levels of solid
+ * colors with different brightness, and 1 soft color.
+ *
+ * - `XXX-1`: The most solid color used mainly for colored text. It must
+ *   satisfy the contrast ratio against when used on top of `XXX-soft`.
+ *
+ * - `XXX-2`: The color used mainly for hover state of the button.
+ *
+ * - `XXX-3`: The color for solid background, such as bg color of the button.
+ *   It must satisfy the contrast ratio with pure white (#ffffff) text on
+ *   top of it.
+ *
+ * - `XXX-soft`: The color used for subtle background such as custom container
+ *   or badges. It must satisfy the contrast ratio when putting `XXX-1` colors
+ *   on top of it.
+ *
+ *   The soft color must be semi transparent alpha channel. This is crucial
+ *   because it allows adding multiple "soft" colors on top of each other
+ *   to create an accent, such as when having inline code block inside
+ *   custom containers.
+ *
+ * - `default`: The color used purely for subtle indication without any
+ *   special meanings attached to it such as bg color for menu hover state.
+ *
+ * - `brand`: Used for primary brand colors, such as link text, button with
+ *   brand theme, etc.
+ *
+ * - `tip`: Used to indicate useful information. The default theme uses the
+ *   brand color for this by default.
+ *
+ * - `warning`: Used to indicate warning to the users. Used in custom
+ *   container, badges, etc.
+ *
+ * - `danger`: Used to show error, or dangerous message to the users. Used
+ *   in custom container, badges, etc.
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-c-default-1: var(--vp-c-gray-1);
+  --vp-c-default-2: var(--vp-c-gray-2);
+  --vp-c-default-3: var(--vp-c-gray-3);
+  --vp-c-default-soft: var(--vp-c-gray-soft);
+
+  --vp-c-brand-1: var(--vp-c-indigo-1);
+  --vp-c-brand-2: var(--vp-c-indigo-2);
+  --vp-c-brand-3: var(--vp-c-indigo-3);
+  --vp-c-brand-soft: var(--vp-c-indigo-soft);
+
+  --vp-c-tip-1: var(--vp-c-brand-1);
+  --vp-c-tip-2: var(--vp-c-brand-2);
+  --vp-c-tip-3: var(--vp-c-brand-3);
+  --vp-c-tip-soft: var(--vp-c-brand-soft);
+
+  --vp-c-warning-1: var(--vp-c-yellow-1);
+  --vp-c-warning-2: var(--vp-c-yellow-2);
+  --vp-c-warning-3: var(--vp-c-yellow-3);
+  --vp-c-warning-soft: var(--vp-c-yellow-soft);
+
+  --vp-c-danger-1: var(--vp-c-red-1);
+  --vp-c-danger-2: var(--vp-c-red-2);
+  --vp-c-danger-3: var(--vp-c-red-3);
+  --vp-c-danger-soft: var(--vp-c-red-soft);
+}
+
+/**
+ * Component: Button
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-button-brand-border: transparent;
+  --vp-button-brand-text: var(--vp-c-white);
+  --vp-button-brand-bg: var(--vp-c-brand-3);
+  --vp-button-brand-hover-border: transparent;
+  --vp-button-brand-hover-text: var(--vp-c-white);
+  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
+  --vp-button-brand-active-border: transparent;
+  --vp-button-brand-active-text: var(--vp-c-white);
+  --vp-button-brand-active-bg: var(--vp-c-brand-1);
+}
+
+/**
+ * Component: Home
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    #bd34fe 30%,
+    #41d1ff
+  );
+
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    #bd34fe 50%,
+    #47caff 50%
+  );
+  --vp-home-hero-image-filter: blur(44px);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-filter: blur(56px);
+  }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-filter: blur(68px);
+  }
+}
+
+/**
+ * Component: Custom Block
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-custom-block-tip-border: transparent;
+  --vp-custom-block-tip-text: var(--vp-c-text-1);
+  --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
+  --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
+}
+
+/**
+ * Component: Algolia
+ * -------------------------------------------------------------------------- */
+
+.DocSearch {
+  --docsearch-primary-color: var(--vp-c-brand-1) !important;
+}
+
+
+/* Notion 风格 Callout */
+.notion-callout {
+  padding: 16px 16px;
+  border-radius: 6px;
+  margin: 1rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #37352f;
+}
+
+.notion-callout-icon {
+  flex: 0 0 auto;
+  /* margin-top: 2px; */
+}
+
+.notion-callout-icon-emoji {
+  font-size: 22px;
+  line-height: 1;
+  user-select: none;
+}
+
+.notion-callout-icon-img {
+  display: block;
+  /* width: 28px; */
+  /* height: 28px; */
+  object-fit: contain;
+}
+
+.notion-callout-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notion-callout-content > p:first-child { margin-top: 0; }
+.notion-callout-content > p:last-child { margin-bottom: 0; }
+
+/* 浅色：多颜色 */
+/* .notion-callout.default { background: #f1f1ef; } */
+.notion-callout.default { background: transparent; }
+.notion-callout.transparent { background: transparent; }
+.notion-callout.gray    { background: #f1f1ef; }
+.notion-callout.brown   { background: #f4eeee; }
+.notion-callout.orange  { background: #fbf3db; }
+.notion-callout.yellow  { background: #fbf3db; }
+.notion-callout.green   { background: #edf3ec; }
+.notion-callout.blue    { background: #e3f2fd; }
+.notion-callout.purple  { background: #f7f3f8; }
+.notion-callout.pink    { background: #fbf2f5; }
+.notion-callout.red     { background: #fbe4e4; }
+
+/* 暗黑模式（可按需微调） */
+.dark .notion-callout { color: #d4d4d4; }
+.dark .notion-callout.default { background: #2f2f2f; }
+.dark .notion-callout.transparent { background: transparent; }
+.dark .notion-callout.gray    { background: #2f2f2f; }
+.dark .notion-callout.brown   { background: #3a3232; }
+.dark .notion-callout.orange  { background: #3f362e; }
+.dark .notion-callout.yellow  { background: #3f392e; }
+.dark .notion-callout.green   { background: #2d3832; }
+.dark .notion-callout.blue    { background: #263341; }
+.dark .notion-callout.purple  { background: #362e40; }
+.dark .notion-callout.pink    { background: #3d2e37; }
+.dark .notion-callout.red     { background: #3e2d2e; }
+
+
+/* Figure 容器：整体居中 */
+.figure-center {
+  margin: 2rem auto;    /* 上下留白，左右自动居中 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* 内容水平居中 */
+  text-align: center;   /* 文字居中 */
+  max-width: 80%;       /* 限制最大宽度，防止太宽 */
+}
+
+/* 图片样式 */
+.figure-center img {
+  display: block;
+  margin-bottom: 12px;  /* 图片与文字间距 */
+  border-radius: 4px;   /* 可选：圆角 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* 可选：加点阴影更好看 */
+  border: 1px solid #ddd; /* 可选：仿截图的边框 */
+}
+
+/* Caption 样式 (匹配 Markdown 渲染出的 p 标签) */
+.figure-center p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* 针对 Caption 中的加粗文字 (Figure 13) */
+.figure-center strong {
+  color: #000;
+  font-weight: 600;
+}
+
+/* 暗黑模式适配 */
+.dark .figure-center img {
+  border-color: #444;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.dark .figure-center p {
+  color: #bbb;
+}
+.dark .figure-center strong {
+  color: #fff;
+}
+
+/**
+ * Component: Term (术语定义)
+ * 使用方式: ::: term termTitle
+ * -------------------------------------------------------------------------- */
+.term {
+  display: flex;
+  gap: 2rem;
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+}
+
+.term-title {
+  flex: 0 0 120px;
+  font-size: 1rem;
+  font-weight: 600;
+  /* color: var(--vp-c-brand-1); */
+  line-height: 1.75;
+  padding-top: 2px;
+}
+
+.term-content {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--vp-c-text-1);
+}
+
+.term-content > p:first-child {
+  margin-top: 0;
+}
+
+.term-content > p:last-child {
+  margin-bottom: 0;
+}
+
+/* 响应式：小屏幕垂直布局 */
+@media (max-width: 640px) {
+  .term {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .term-title {
+    flex: none;
+    font-size: 1.1rem;
+    border-bottom: 2px solid var(--vp-c-brand-soft);
+    padding-bottom: 0.5rem;
+  }
+}
+
+/* 暗黑模式 */
+.dark .term {
+  background: linear-gradient(135deg, #1a1a1a 0%, #242424 100%);
+  border-color: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dark .term-title {
+  color: var(--vp-c-brand-2);
+}
+
+.dark .term-content {
+  color: var(--vp-c-text-1);
+}
