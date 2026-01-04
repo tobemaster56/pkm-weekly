@@ -15,6 +15,17 @@ const languages = [
 const pathInfo = computed(() => {
   const path = route.path
   
+  // Match homepage paths like /en/, /zh/, /zh-TW/
+  const homeMatch = path.match(/^\/(en|zh|zh-TW)\/?$/)
+  if (homeMatch) {
+    return {
+      type: 'home',
+      lang: homeMatch[1],
+      section: null,
+      rest: '/'
+    }
+  }
+  
   // Match paths like /weekly/en/xxx, /v2/zh/xxx, /examples/en/xxx
   const match = path.match(/^\/([^/]+)\/(en|zh|zh-TW)(\/.*)?$/)
   if (match) {
@@ -39,6 +50,12 @@ function getLangLink(langCode: string): string {
   const info = pathInfo.value
   if (!info) return '/'
   
+  // Homepage paths
+  if (info.type === 'home') {
+    return `/${langCode}/`
+  }
+  
+  // Section paths
   return `/${info.section}/${langCode}${info.rest}`
 }
 

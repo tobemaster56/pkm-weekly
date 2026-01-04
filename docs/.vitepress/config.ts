@@ -116,26 +116,14 @@ const resourcesZhTWSidebar = [
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "My Documentation",
-  head: [["link", { rel: "icon", href: "/vitepress-i18n-template/favicon.ico" }]],
-  description: "A VitePress template with multi-language support and version-based documentation structure",
+  title: "PKM Weekly",
+  head: [["link", { rel: "icon", href: "/favicon.ico" }]],
+  description: "Personal Knowledge Management Weekly - Track updates, news, and insights from the PKM ecosystem",
+  
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: "Home", link: "/" },
-      {
-        text: "weekly",
-        link: "/weekly/en/",
-        // items: [
-        //   { text: "weekly (Current)", link: "/weekly/en/" },
-        //   { text: "v2 (Next)", link: "/v2/en/" },
-        // ],
-      },
-      // { text: "Docs", link: "/weekly/en/" },
-      // { text: "Examples", link: "/examples/en/" },
-      // { text: "Resources", link: "/resources/en/" },
-    ],
-
+    // 导航由自定义 DynamicNav 组件处理
+    
     sidebar: {
       // weekly documentation
       "/weekly/en/": weeklyEnSidebar,
