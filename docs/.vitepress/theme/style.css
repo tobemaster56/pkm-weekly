@@ -137,6 +137,54 @@
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
 
+/**
+ * 自定义导航栏布局 - 模仿 VitePress 官方布局
+ * 顺序：搜索 → 导航 → 主题切换 → GitHub → 语言切换
+ * -------------------------------------------------------------------------- */
+.VPNavBar .content-body {
+  display: flex;
+  align-items: center;
+}
+
+/* 搜索框在最左边 */
+.VPNavBar .VPNavBarSearch {
+  order: 0;
+  flex-grow: 1;
+}
+
+/* 自定义导航在搜索框后 */
+#custom-nav {
+  order: 1;
+}
+
+/* 主题切换 */
+.VPNavBar .VPNavBarAppearance {
+  order: 2;
+}
+
+/* GitHub 链接 */
+.VPNavBar .VPNavBarSocialLinks {
+  order: 3;
+}
+
+/* 额外菜单 */
+.VPNavBar .VPNavBarExtra {
+  order: 4;
+}
+
+/* 语言切换器 */
+.VPNavBar .lang-switcher {
+  order: 5;
+}
+
+/* 汉堡菜单（移动端） */
+.VPNavBar .VPNavBarHamburger {
+  order: 6;
+}
+
+
+
+
 
 /* Notion 风格 Callout */
 .notion-callout {

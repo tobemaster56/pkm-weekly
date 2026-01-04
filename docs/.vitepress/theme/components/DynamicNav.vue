@@ -7,34 +7,34 @@ const route = useRoute()
 // 获取当前语言
 const currentLang = computed(() => {
   const path = route.path
-  
+
   // 匹配首页路径 /en/, /zh/, /zh-TW/
   const homeMatch = path.match(/^\/(en|zh|zh-TW)\/?/)
   if (homeMatch) {
     return homeMatch[1]
   }
-  
+
   // 匹配 section 路径 /weekly/en/xxx, /v2/zh/xxx
   const sectionMatch = path.match(/^\/[^/]+\/(en|zh|zh-TW)/)
   if (sectionMatch) {
     return sectionMatch[1]
   }
-  
+
   return 'zh' // 默认语言
 })
 
 // 导航项配置
 const navItems = computed(() => {
   const lang = currentLang.value
-  
+
   const labels: Record<string, { home: string; weekly: string }> = {
     'en': { home: 'Home', weekly: 'Weekly' },
     'zh': { home: '首页', weekly: '周刊' },
     'zh-TW': { home: '首頁', weekly: '週刊' }
   }
-  
+
   const l = labels[lang] || labels['zh']
-  
+
   return [
     { text: l.home, link: `/${lang}/` },
     { text: l.weekly, link: `/weekly/${lang}/` }
@@ -54,7 +54,7 @@ function isActive(link: string): boolean {
 </script>
 
 <template>
-  <nav class="dynamic-nav">
+  <nav id="custom-nav" class="dynamic-nav">
     <a
       v-for="item in navItems"
       :key="item.link"
@@ -71,6 +71,7 @@ function isActive(link: string): boolean {
   display: flex;
   align-items: center;
   gap: 24px;
+  padding-right: 24px;
 }
 
 .nav-link {

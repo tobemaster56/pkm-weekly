@@ -3,8 +3,8 @@ import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
-import LanguageSwitcher from './components/LanguageSwitcher.vue'
 import DynamicNav from './components/DynamicNav.vue'
+import LanguageSwitcher from './components/LanguageSwitcher.vue'
 
 export default {
   extends: DefaultTheme,
@@ -16,7 +16,6 @@ export default {
     })
   },
   enhanceApp({ app, router, siteData }) {
-    app.component('LanguageSwitcher', LanguageSwitcher)
-    app.component('DynamicNav', DynamicNav)
+    // 注册组件（可选）
   }
 } satisfies Theme
