@@ -11,29 +11,18 @@ const languages = [
   { code: 'zh-TW', label: '繁體中文' }
 ]
 
-// Parse current path to extract version and language info
+// Parse current path to extract section and language info
 const pathInfo = computed(() => {
   const path = route.path
   
-  // Match versioned paths like /v1/en/xxx or /v2/zh/xxx
-  const versionMatch = path.match(/^\/(v\d+)\/(en|zh|zh-TW)(\/.*)?$/)
-  if (versionMatch) {
-    return {
-      type: 'versioned',
-      version: versionMatch[1],
-      lang: versionMatch[2],
-      rest: versionMatch[3] || '/'
-    }
-  }
-  
-  // Match section paths like /examples/en/xxx or /resources/zh/xxx
-  const sectionMatch = path.match(/^\/(examples|resources)\/(en|zh|zh-TW)(\/.*)?$/)
-  if (sectionMatch) {
+  // Match paths like /weekly/en/xxx, /v2/zh/xxx, /examples/en/xxx
+  const match = path.match(/^\/([^/]+)\/(en|zh|zh-TW)(\/.*)?$/)
+  if (match) {
     return {
       type: 'section',
-      section: sectionMatch[1],
-      lang: sectionMatch[2],
-      rest: sectionMatch[3] || '/'
+      section: match[1],
+      lang: match[2],
+      rest: match[3] || '/'
     }
   }
   
@@ -50,13 +39,7 @@ function getLangLink(langCode: string): string {
   const info = pathInfo.value
   if (!info) return '/'
   
-  if (info.type === 'versioned') {
-    return `/${info.version}/${langCode}${info.rest}`
-  } else if (info.type === 'section') {
-    return `/${info.section}/${langCode}${info.rest}`
-  }
-  
-  return '/'
+  return `/${info.section}/${langCode}${info.rest}`
 }
 
 // Whether to show language switcher (only on specific paths)

@@ -8,7 +8,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /v1/en/
+      link: /weekly/en/
     - theme: alt
       text: View on GitHub
       link: https://github.com/your-username/your-repo
@@ -16,7 +16,7 @@ hero:
 features:
   - title: Multi-Language Support
     details: Built-in support for English, Simplified Chinese, and Traditional Chinese with easy language switching.
-    link: /v1/en/
+    link: /weekly/en/
     linkText: Read Docs
   - title: Version-Based Structure
     details: Organize your documentation by versions (v1, v2, etc.) to support multiple product releases.

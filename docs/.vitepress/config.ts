@@ -1,38 +1,47 @@
 import { defineConfig } from "vitepress";
 import { registerContainers } from "./markdown/containers";
 
-// v1 English documentation sidebar
-const v1EnSidebar = [
+// weekly English documentation sidebar
+const weeklyEnSidebar = [
   {
     text: "Documentation",
     items: [
-      { text: "Overview", link: "/v1/en/" },
-      { text: "Getting Started", link: "/v1/en/getting-started" },
-      { text: "Configuration", link: "/v1/en/configuration" },
+      { text: "Overview", link: "/weekly/en/" },
+      {
+        text: "2026",
+        collapsed: false,
+        items: [{ text: "Week 01", link: "/weekly/en/pkm-2026-w01" }],
+      },
     ],
   },
 ];
 
-// v1 Simplified Chinese documentation sidebar
-const v1ZhSidebar = [
+// weekly Simplified Chinese documentation sidebar
+const weeklyZhSidebar = [
   {
     text: "文档",
     items: [
-      { text: "概述", link: "/v1/zh/" },
-      { text: "快速开始", link: "/v1/zh/getting-started" },
-      { text: "配置", link: "/v1/zh/configuration" },
+      { text: "概述", link: "/weekly/zh/" },
+      {
+        text: "2026",
+        collapsed: false,
+        items: [{ text: "第一周", link: "/weekly/zh/pkm-2026-w01" }],
+      },
     ],
   },
 ];
 
-// v1 Traditional Chinese documentation sidebar
-const v1ZhTWSidebar = [
+// weekly Traditional Chinese documentation sidebar
+const weeklyZhTWSidebar = [
   {
     text: "文件",
     items: [
-      { text: "概述", link: "/v1/zh-TW/" },
-      { text: "快速開始", link: "/v1/zh-TW/getting-started" },
-      { text: "配置", link: "/v1/zh-TW/configuration" },
+      { text: "概述", link: "/weekly/zh-TW/" },
+      {
+        text: "2026",
+        collapsed: false,
+        items: [{ text: "第一週", link: "/weekly/zh-TW/pkm-2026-w01" }],
+      },
     ],
   },
 ];
@@ -107,7 +116,6 @@ const resourcesZhTWSidebar = [
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: "/vitepress-i18n-template/",
   title: "My Documentation",
   head: [["link", { rel: "icon", href: "/vitepress-i18n-template/favicon.ico" }]],
   description: "A VitePress template with multi-language support and version-based documentation structure",
@@ -116,22 +124,23 @@ export default defineConfig({
     nav: [
       { text: "Home", link: "/" },
       {
-        text: "v1",
-        items: [
-          { text: "v1 (Current)", link: "/v1/en/" },
-          { text: "v2 (Next)", link: "/v2/en/" },
-        ],
+        text: "weekly",
+        link: "/weekly/en/",
+        // items: [
+        //   { text: "weekly (Current)", link: "/weekly/en/" },
+        //   { text: "v2 (Next)", link: "/v2/en/" },
+        // ],
       },
-      { text: "Docs", link: "/v1/en/" },
-      { text: "Examples", link: "/examples/en/" },
-      { text: "Resources", link: "/resources/en/" },
+      // { text: "Docs", link: "/weekly/en/" },
+      // { text: "Examples", link: "/examples/en/" },
+      // { text: "Resources", link: "/resources/en/" },
     ],
 
     sidebar: {
-      // v1 documentation
-      "/v1/en/": v1EnSidebar,
-      "/v1/zh/": v1ZhSidebar,
-      "/v1/zh-TW/": v1ZhTWSidebar,
+      // weekly documentation
+      "/weekly/en/": weeklyEnSidebar,
+      "/weekly/zh/": weeklyZhSidebar,
+      "/weekly/zh-TW/": weeklyZhTWSidebar,
       // v2 documentation
       "/v2/en/": v2EnSidebar,
       "/v2/zh/": v2ZhSidebar,
@@ -149,7 +158,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: "github",
-        link: "https://github.com/your-username/your-repo",
+        link: "https://github.com/tobemaster56/pkm-weekly",
       },
     ],
   },
